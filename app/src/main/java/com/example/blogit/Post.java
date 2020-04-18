@@ -15,6 +15,7 @@ import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -60,6 +61,8 @@ public class Post extends AppCompatActivity {
             }
         });
 
+
+
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,11 +73,11 @@ public class Post extends AppCompatActivity {
 
     private void UploadingActivity() {
         mprogress.setMessage("Uploading...");
-        mprogress.show();
         final String title_Val=mTitle.getText().toString().trim();
         final String Story_Val=mStory.getText().toString().trim();
         if(!TextUtils.isEmpty(title_Val) && !TextUtils.isEmpty(Story_Val) && ImageUri!=null)
         {
+            mprogress.show();
             StorageReference filepath= mStorage.child("Blog_Image").child(ImageUri.getLastPathSegment());
             filepath.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -89,6 +92,9 @@ public class Post extends AppCompatActivity {
 
                 }
             });
+        }else {
+            Toast toast = Toast.makeText(Post.this,"Not done",Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
