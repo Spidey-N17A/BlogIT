@@ -89,7 +89,6 @@ public class Post extends AppCompatActivity {
                     Post.child("Image").setValue(downloadurl);
                     mprogress.dismiss();
                     startActivity(new Intent(Post.this,MainActivity.class));
-
                 }
             });
         }else {

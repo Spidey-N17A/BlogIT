@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -20,6 +21,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,39 +55,32 @@ public class MainActivity extends AppCompatActivity {
 
            @Override
            protected void onBindViewHolder(@NonNull BlogView holder, int position, @NonNull Blog model) {
-               holder.SetTitle(model.getTitle());
-               holder.SetStory(model.getStory());
+               holder.SetStory.setText(model.getStory());
+               holder.SetTitle.setText(model.getTitle());
+             //  holder.SetStory(model.getImage());
 
            }
 
 
 
         };
+        firebaseRecyclerAdapter.startListening();
         mBlog.setAdapter(firebaseRecyclerAdapter);
     }
 
 
     public static class BlogView extends RecyclerView.ViewHolder
     {
-        View mView;
+        private TextView SetTitle,SetStory;
+        private ImageView imageView;
         public  BlogView(@NonNull View itemView) {
             super(itemView);
-            mView=itemView;
+            SetTitle=itemView.findViewById(R.id.Post_title);
+            SetStory=itemView.findViewById(R.id.Post_story);
+
+
 
         }
-
-        public void SetTitle(String title)
-        {
-            TextView textView = (TextView)mView.findViewById(R.id.Post_title);
-            textView.setText(title);
-        }
-
-        public void SetStory(String Story)
-        {
-            TextView textView = (TextView)mView.findViewById(R.id.Post_story);
-            textView.setText(Story);
-        }
-
     }
 
 

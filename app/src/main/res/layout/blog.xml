@@ -21,7 +21,7 @@
             android:layout_marginBottom="20dp"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <EditText
+        <TextView
             android:id="@+id/Post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="24sp"
             android:textStyle="bold|italic" />
 
-        <EditText
+        <TextView
             android:id="@+id/Post_story"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

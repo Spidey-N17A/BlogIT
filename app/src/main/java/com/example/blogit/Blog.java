@@ -7,8 +7,8 @@ public class Blog {
     private String image;
     private String title;
 
-
-
+    public Blog() {
+    }
 
     public Blog(String story, String image, String title) {
         this.story = story;
